@@ -138,20 +138,3 @@ require 'configs.cmp'
 require("leap").add_default_mappings()
 
 require 'custom.autocmds'
-
-if vim.loop.os_uname().sysname == "Windows_NT" then
-  -- nushell
-  vim.keymap.set("n", "<leader>tt", "<cmd>terminal<cr>inu<cr>")
-  -- Use nushell on Windows
-  -- This will break tempfile redirection!!
-  -- TODO: Find alternative ways to create terminal
-
-  -- vim.o.shell = "nu"
-  -- vim.o.shellpipe = "| save %s"
-  -- vim.o.shellredir = "| save %s"
-  -- vim.o.shellcmdflag = '-c'
-  -- vim.o.shellquote = ""
-  -- vim.o.shellxquote = ""
-else
-  vim.keymap.set("n", "<leader>tt", "<cmd>terminal<cr>i")
-end
