@@ -34,3 +34,5 @@ require 'configs.cmp'
 require("leap").add_default_mappings()
 
 require 'custom.autocmds'
+
+-- vim: ts=2 sts=2 sw=2 et

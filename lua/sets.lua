@@ -58,11 +58,11 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 
 
 local function printDate()
-	local pos = vim.api.nvim_win_get_cursor(0)[2]
-	local line = vim.api.nvim_get_current_line()
-	local date = os.date()
-	local nline = line:sub(0, pos) .. date .. line:sub(pos + 1)
-	vim.api.nvim_set_current_line(nline)
+  local pos = vim.api.nvim_win_get_cursor(0)[2]
+  local line = vim.api.nvim_get_current_line()
+  local date = os.date()
+  local nline = line:sub(0, pos) .. date .. line:sub(pos + 1)
+  vim.api.nvim_set_current_line(nline)
 end
 
 vim.keymap.set('n', '<leader>D', printDate, { desc = 'Print the date' })
@@ -71,21 +71,24 @@ vim.keymap.set('n', '<leader>D', printDate, { desc = 'Print the date' })
 local sets_lua_path = "<cmd>e ~/.dotfiles/config/.config/nvim/lua/sets.lua<cr>"
 local term_cmd = "<cmd>terminal<cr>i"
 if vim.loop.os_uname().sysname == "Windows_NT" then
-	-- nushell
-	term_cmd = "<cmd>terminal<cr>inu<cr>"
-	-- This will break tempfile redirection!!
-	-- TODO: Find alternative ways to create terminal
+  -- nushell
+  term_cmd = "<cmd>terminal<cr>inu<cr>"
+  -- This will break tempfile redirection!!
+  -- TODO: Find alternative ways to create terminal
 
-	-- vim.o.shell = "nu"
-	-- vim.o.shellpipe = "| save %s"
-	-- vim.o.shellredir = "| save %s"
-	-- vim.o.shellcmdflag = '-c'
-	-- vim.o.shellquote = ""
-	-- vim.o.shellxquote = ""
+  -- vim.o.shell = "nu"
+  -- vim.o.shellpipe = "| save %s"
+  -- vim.o.shellredir = "| save %s"
+  -- vim.o.shellcmdflag = '-c'
+  -- vim.o.shellquote = ""
+  -- vim.o.shellxquote = ""
 
-	sets_lua_path = "<cmd>e ~/AppData/Local/nvim/lua/sets.lua<cr>"
+  sets_lua_path = "<cmd>e ~/AppData/Local/nvim/lua/sets.lua<cr>"
 end
 vim.keymap.set('n', '<leader>E', sets_lua_path, { desc =  "[E]dit user configuration" })
 vim.keymap.set("n", "<leader>tt", term_cmd, { desc = "Open terminal" })
 vim.keymap.set('n', '<leader>cd', "<cmd>cd %:p:h<cr>",{ desc = "[C]hange current [D]irectory to the file in the buffer" })
 vim.keymap.set('n', '<leader>F', "<cmd>Neoformat<cr>",{ desc = "[F]ormat file" })
+vim.keymap.set('n', '<leader>d', '<cmd>bd<cr>', { desc = '[D]elete buffer' })
+
+-- vim: ts=2 sts=2 sw=2 et
